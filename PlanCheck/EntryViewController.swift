@@ -30,8 +30,6 @@ class EntryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
     @IBAction func entryAdd(_ sender: Any) {
         
         let alert = UIAlertController(title: "達成の登録", message: "達成できたを登録してよろしいですか？", preferredStyle: .alert)
@@ -58,7 +56,6 @@ class EntryViewController: UIViewController {
     }
     
     
-    
     @IBAction func entryDrop(_ sender: Any) {
         
         let alert = UIAlertController(title: "達成の登録", message: "達成できなかったを登録してよろしいですか？", preferredStyle: .alert)
@@ -82,13 +79,4 @@ class EntryViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
-    
-
-    
-    
-    
-    
-    
-    
-    
 }

@@ -51,9 +51,6 @@ class CheckViewController: UIViewController {
         print(checkSuccess)
         print(checkFailure)
         
-        
-        
-        
         // グラフの中央に表示されるテキスト
         pieChart.centerText = "達成率"
         
@@ -80,9 +77,5 @@ class CheckViewController: UIViewController {
         let chartData = PieChartData(dataSet: dataSet)
         pieChart.data = chartData
         
-        
-        
     }
-    
-    
 }

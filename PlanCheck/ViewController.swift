@@ -13,12 +13,9 @@ import Foundation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate{
     
-    
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
     
     //EntryViewControllerへ遷移
     @IBAction func entryButton(_ sender: Any, forEvent event: UIEvent) {
@@ -35,7 +32,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.present(entrytViewController, animated: true, completion: nil)
         
     }
-    
     
     // Realmインスタンスを取得
     let realm = try! Realm()
@@ -62,7 +58,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "達成項目", style: .plain, target: self, action: #selector(goCheck))
         self.navigationItem.rightBarButtonItem!.tintColor = .white
         
-        
     }
     
     var checkIndex:Int = 0
@@ -75,30 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let allData = realm.objects(Plan.self)
         print("\(allData):Realmに保存した全てのUserレコード")
         
-        // 検索結果の件数を取得
-        let countAll = Float(allData.count)
-        print(countAll)
-        
-        //達成した件数
-        let success = realm.objects(Plan.self).filter("attain == 1")
-        let successCount = Float(success.count)
-        print(successCount)
-        checkViewController.checkSuccess = Int(successCount)
-        
-        //未達成件数
-        let failure = realm.objects(Plan.self).filter("attain == 2")
-        let failureCount = Float(failure.count)
-        print(failureCount)
-        checkViewController.checkFailure = Int(failureCount)
-        
-        
-        //達成率の計算（達成/Check登録済み件数）
-        let calc = (successCount / countAll) * 100
-        
-        checkViewController.percent = String(format: "%.2f",calc)
-        
-        print(calc)
-        
+        //期間基準日（今日）
         let dt = Date()
         let dateFormatter = DateFormatter()
         
@@ -107,12 +79,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         checkViewController.checkToday = dateFormatter.string(from: dt) + "から"
         
         
+        //期間終了日（１ヶ月前）
         let dtLast = Calendar.current.date(byAdding: .day, value: -31, to: dt)!
         
         // DateFormatter を使用して書式とロケールを指定する
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMd", options: 0, locale: Locale(identifier: "ja_JP"))
         checkViewController.checkLastDay = dateFormatter.string(from: dtLast) + "まで"
         
+        //期間を指定してデータを抽出
+        let selectAllData = realm.objects(Plan.self).filter("date >= %@ AND date < %@",dtLast,dt)
+        
+        // 期間指定の検索結果の件数を取得
+        let countAll = Float(selectAllData.count)
+        print(countAll)
+        
+        //期間内で達成した件数
+        let success = selectAllData.filter("attain == 1")
+        let successCount = Float(success.count)
+        print(successCount)
+        checkViewController.checkSuccess = Int(successCount)
+        
+        //期間内で未達成件数
+        let failure = selectAllData.filter("attain == 2")
+        let failureCount = Float(failure.count)
+        print(failureCount)
+        checkViewController.checkFailure = Int(failureCount)
+        
+        //達成率の計算（達成/Check登録済み件数）
+        let calc = (successCount / countAll) * 100
+        
+        checkViewController.percent = String(format: "%.2f",calc)
+        
+        print(calc)
+        print(dt)
+        print(dtLast)
+        print(selectAllData)
         
         self.present(checkViewController, animated: true, completion: nil)
         
@@ -136,7 +137,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             planArray = realm.objects(Plan.self).where({$0.category.contains(searchBar.text!)})
             tableView.reloadData()
         }
-        
     }
     
     // データの数（＝セルの数）を返すメソッド
@@ -164,10 +164,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let dateString:String = formatter.string(from: plan.date)
         cell.planTime.text = "締切期限" + " : " + dateString
         
-        
         cell.indexPath = indexPath
         print("セルのindex番号: \(indexPath.row)")
-        
         
         return cell
     }
