@@ -8,7 +8,6 @@
 import UIKit
 import RealmSwift
 import UserNotifications
-import SwiftUI
 import Foundation
 import Charts
 
