@@ -115,6 +115,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(dtLast)
         print(selectAllData)
         
+        
+        
+        //以下、テスト用
+        
+        /*
+         渡したい値：
+         Realmから期間をして値を抽出、かつ"attain"で分類した値（「let success 」「let failure」）
+         
+         理由：EntryViewControllerで達成率（グラフ）の下部にはフラフの元になったデータの一覧を表示させるボタンを配置している。
+         　　　ボタンをクリックすることでSelectAllViewControllerにデータ一覧を表示するため、このButtonAction内で抽出したReaimの値を
+         　　　SelectAllViewControllerに渡し、Labelに表示したい
+        　　　 ※ Realmから抽出した値は共通のものとして各Viewで表示したい（異なる表示を避けるため）
+         
+         検討：EntryViewController　→　SelectAllViewController　の順番で遷移するが、EntryViewController　→　SelectAllViewControllerの
+         　　　順番で抽出したRealmの値を渡したい方がいいのか、直接SelectAllViewControllerに値を渡した方がいいのか。
+         
+        
+         
+         テストとして、EntryViewControllerに抽出したRealmの値を渡せるか確認する
+         
+         checkViewController.selectList = Plan(value: selectAllData)
+         強制終了になる
+        
+         */
+        
+        
+        /*
+        テストとしてplanArray[0]でCheckViewControllerに値が渡せるか確認する。
+         planArrayのindexPathを指定してテスト
+          → CheckViewControllerに値を渡せることを確認
+　　　　　*/
+        
+        let test = planArray[0]
+        checkViewController.selectList = test
+        
         self.present(checkViewController, animated: true, completion: nil)
         
     }

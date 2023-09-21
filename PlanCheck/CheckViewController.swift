@@ -13,9 +13,9 @@ import Charts
 
 class CheckViewController: UIViewController {
     
-    
     let realm = try! Realm()
-    var plan: Plan!
+    
+    var selectList: Plan!
     
     var percent: String = ""
     var checkToday: String = ""
@@ -36,6 +36,14 @@ class CheckViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+
+    
+    @IBAction func listViewButton(_ sender: UIButton, forEvent event: UIEvent) {
+        let selectAllViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAll") as! SelectAllViewController
+        self.present(selectAllViewController, animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +58,8 @@ class CheckViewController: UIViewController {
         print(checkLastDay)
         print(checkSuccess)
         print(checkFailure)
+        print(checkFailure)
+        print(selectList ?? "")
         
         // グラフの中央に表示されるテキスト
         pieChart.centerText = "達成率"

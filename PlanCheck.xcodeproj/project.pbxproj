@@ -19,6 +19,7 @@
 		9E8E99A12AB17A4C00D3F525 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E99A02AB17A4C00D3F525 /* InputViewController.swift */; };
 		9E8E99A32AB1887400D3F525 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E99A22AB1887400D3F525 /* Plan.swift */; };
 		9EC868FA2AB407B90095CF1C /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC868F92AB407B90095CF1C /* CheckViewController.swift */; };
+		9EF734292ABC552900D1C517 /* SelectAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF734282ABC552900D1C517 /* SelectAllViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9E8E99A02AB17A4C00D3F525 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		9E8E99A22AB1887400D3F525 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		9EC868F92AB407B90095CF1C /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		9EF734282ABC552900D1C517 /* SelectAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAllViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				9E74CE302AB3466500ED78F8 /* EntryViewController.swift */,
 				9EC868F92AB407B90095CF1C /* CheckViewController.swift */,
 				9E22AB042AB49DCA00A537C9 /* TableViewCell.swift */,
+				9EF734282ABC552900D1C517 /* SelectAllViewController.swift */,
 			);
 			path = PlanCheck;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				9E8E998D2AB1757D00D3F525 /* AppDelegate.swift in Sources */,
 				9E8E998F2AB1757D00D3F525 /* SceneDelegate.swift in Sources */,
 				9E74CE312AB3466500ED78F8 /* EntryViewController.swift in Sources */,
+				9EF734292ABC552900D1C517 /* SelectAllViewController.swift in Sources */,
 				9E8E99A12AB17A4C00D3F525 /* InputViewController.swift in Sources */,
 				9E8E99A32AB1887400D3F525 /* Plan.swift in Sources */,
 			);

@@ -13,6 +13,7 @@ class EntryViewController: UIViewController {
     
     let realm = try! Realm()
     var plan: Plan!
+ 
     
     @IBOutlet weak var entryTitle: UILabel!
     
